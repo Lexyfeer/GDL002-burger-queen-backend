@@ -12,7 +12,7 @@ const ProductsController = {
         } else {
             productsData.find(object, (err, result) => {
                 if (err) {
-                    defer.reject({ code: 500, data: `Error getting data from ${productsData}` });
+                    defer.reject({ code: 500, data: `Error on ${err}` });
                 } else {
                     if (!result) {
                         defer.reject({ code: 404, data: `${productsData} is empty. ${err}` });
@@ -33,7 +33,7 @@ const ProductsController = {
         } else {
             productsData.findById (_id, (err, result) => {
                 if (err) {
-                    defer.reject({ code: 500, data: `Error getting data from ${productsData}` });
+                    defer.reject({ code: 500, data: `Error on ${err}` });
                 } else {
                     if (!result) {
                         defer.reject({ code: 404, data: `${productsData} is empty. ${err}` });
@@ -54,7 +54,7 @@ const ProductsController = {
         } else {
             productsData.create(product, (err, result) => {
                 if (err) {
-                    defer.reject({ code: 500, data: `Error getting data from ${productsData}` });
+                    defer.reject({ code: 500, data: `Error on ${err}` });
                 } else {
                     if (!result) {
                         defer.reject({ code: 404, data: `${productsData} is empty. ${err}` });
@@ -75,7 +75,7 @@ const ProductsController = {
         } else {
             productsData.findByIdAndDelete(_id, (err, result) => {
                 if (err) {
-                    defer.reject({ code: 500, data: `Error getting data from ${productsData}` });
+                    defer.reject({ code: 500, data: `Error on ${err}` });
                 } else {
                     if (!result) {
                         defer.reject({ code: 404, data: `${productsData} is empty. ${err}` });
@@ -94,9 +94,9 @@ const ProductsController = {
         if (!isConnected) {
             defer.reject({ code: 500, data: "DB is not reachable" });
         } else {
-            productsData.findByIdAndUpdate(_id, product, (err, result) => {
+            productsData.findByIdAndUpdate(_id, product, {new : true}, (err, result) => {
                 if (err) {
-                    defer.reject({ code: 500, data: `Error getting data from ${productsData}` });
+                    defer.reject({ code: 500, data: `Error on ${err}` });
                 } else {
                     if (!result) {
                         defer.reject({ code: 404, data: `${productsData} is empty. ${err}` });

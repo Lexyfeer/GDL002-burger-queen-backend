@@ -68,12 +68,13 @@ router.delete('/products/:_id', (req, res) => {
 router.put('/products/:_id', (req, res) => {
     let productId = req.params._id;
     
-    let product = new ProductsData();
-    product.Name = req.body.Name;
-    product.Ingredients = req.body.Ingredients;
-    product.Price = req.body.Price;
-    product.Image = req.body.Image;
-    product.Menu = req.body.Menu; 
+    let product = {
+        Name: req.body.Name,
+        Ingredients : req.body.Ingredients,
+        Price : req.body.Price,
+        Image : req.body.Image,
+        Menu : req.body.Menu    
+    };
     
     productsModel.updateProduct(productId, product)
     .then(function (result) {
