@@ -15,7 +15,7 @@ const ProductsController = {
                     defer.reject({ code: 500, data: `Error on ${err}` });
                 } else {
                     if (!result) {
-                        defer.reject({ code: 404, data: `${productsData} is empty. ${err}` });
+                        defer.reject({ code: 404, data: `${err} not found.` });
                     } else {
                         defer.resolve({ code: 200, data: result });
                     }
@@ -36,7 +36,7 @@ const ProductsController = {
                     defer.reject({ code: 500, data: `Error on ${err}` });
                 } else {
                     if (!result) {
-                        defer.reject({ code: 404, data: `${productsData} is empty. ${err}` });
+                        defer.reject({ code: 404, data: `${err} not found.` });
                     } else {
                         defer.resolve({ code: 200, data: result });
                     }
@@ -57,7 +57,7 @@ const ProductsController = {
                     defer.reject({ code: 500, data: `Error on ${err}` });
                 } else {
                     if (!result) {
-                        defer.reject({ code: 404, data: `${productsData} is empty. ${err}` });
+                        defer.reject({ code: 404, data: `${err} not found.` });
                     } else {
                         defer.resolve({ code: 200, data: result });
                     }
@@ -99,7 +99,7 @@ const ProductsController = {
                     defer.reject({ code: 500, data: `Error on ${err}` });
                 } else {
                     if (!result) {
-                        defer.reject({ code: 404, data: `${productsData} is empty. ${err}` });
+                        defer.reject({ code: 404, data: `${err} not found.` });
                     } else {
                         defer.resolve({ code: 200, data: result });
                     }

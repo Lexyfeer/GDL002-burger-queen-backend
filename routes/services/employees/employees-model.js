@@ -1,16 +1,16 @@
 const q = require('q');
 const isConnected = require('../../utils/dbSettings');
-const ordersData = require ('./orders-data');
+const employeesData = require ('./employees-data');
 
 
-const OrdersController = {
+const employeesController = {
     getAll: function (object = {}) {
         let defer = q.defer();
 
         if (!isConnected) {
             defer.reject({ code: 500, data: "DB is not reachable" });
         } else {
-            ordersData.find(object, (err, result) => {
+            employeesData.find(object, (err, result) => {
                 if (err) {
                     defer.reject({ code: 500, data: `Error on ${err}` });
                 } else {
@@ -31,7 +31,7 @@ const OrdersController = {
         if (!isConnected) {
             defer.reject({ code: 500, data: "DB is not reachable" });
         } else {
-            ordersData.findById (_id, (err, result) => {
+            employeesData.findById (_id, (err, result) => {
                 if (err) {
                     defer.reject({ code: 500, data: `Error on ${err}` });
                 } else {
@@ -46,13 +46,13 @@ const OrdersController = {
         return defer.promise;
     },
 
-    saveNewOrder: (order) => {
+    saveNewEmployee: (employee) => {
         let defer = q.defer();
 
         if (!isConnected) {
             defer.reject({ code: 500, data: "DB is not reachable" });
         } else {
-            ordersData.create(order, (err, result) => {
+            employeesData.create(employee, (err, result) => {
                 if (err) {
                     defer.reject({ code: 500, data: `Error on ${err}` });
                 } else {
@@ -67,13 +67,13 @@ const OrdersController = {
         return defer.promise;
     },
 
-    deleteOrder: (_id) => {
+    deleteEmployee: (_id) => {
         let defer = q.defer();
 
         if (!isConnected) {
             defer.reject({ code: 500, data: "DB is not reachable" });
         } else {
-            ordersData.findByIdAndDelete(_id, (err, result) => {
+            employeesData.findByIdAndDelete(_id, (err, result) => {
                 if (err) {
                     defer.reject({ code: 500, data: `Error on ${err}` });
                 } else {
@@ -88,13 +88,13 @@ const OrdersController = {
         return defer.promise;
     },
 
-    updateOrder: (_id, order) => {
+    updateEmployee: (_id, employee) => {
         let defer = q.defer();
 
         if (!isConnected) {
             defer.reject({ code: 500, data: "DB is not reachable" });
         } else {
-            ordersData.findByIdAndUpdate(_id, order, {new : true}, (err, result) => {
+            employeesData.findByIdAndUpdate(_id, employee, {new : true}, (err, result) => {
                 if (err) {
                     defer.reject({ code: 500, data: `Error on ${err}` });
                 } else {
@@ -111,4 +111,4 @@ const OrdersController = {
 
 }
 
-module.exports = OrdersController;
+module.exports = employeesController;
