@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+//const router = express.Router();
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
@@ -16,7 +17,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(logger('dev'));
 app.use(cookieParser());
-app.use(cors());
+app.use(cors(
+    'Access-Control-Allow-Origin', '*', 
+    'Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE',
+    'Access-Control-Allow-Headers', 'Content-Type')) // this include before other routes
 
 //APIs Restful Locations
 app.use(configApp.apiVersioURL, products, orders, employees);
